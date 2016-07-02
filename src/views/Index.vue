@@ -10,7 +10,12 @@
               我是content的
             </div>
 
-            <div v-if="app.pic || isImage">我是合法的图片</div>
+            <div v-if="app.pic || isImage">
+            我是合法的图片
+
+            <img :src="app.pic | SpliceCDNUrl '200' '150' '86' 'scale'" alt="">
+
+            </div>
             <div v-else>
               我是不合法的图片
             </div>
@@ -26,13 +31,13 @@ export default {
             title: 'lyapp',
             content: false,
             created_at: '2016-07-02',
-            pic: 'http://n.sinaimg.cn/photo/20160630/uEM5-fxtniax8285357.jpg'
+            pic: 'http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg'
           }
         }
     },
     ready() {
       const _self = this
-      SpliceCDNUrl('http://n.sinaimg.cn/photo/20160630/uEM5-fxtniax8285357.jpg')
+      // SpliceCDNUrl('http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg', null, '20', null, undefined)
 
       // var html = xss(`<style>alert("xss");</style>`);
       // console.log(html);

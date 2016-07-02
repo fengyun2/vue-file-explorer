@@ -2,7 +2,7 @@
  * @Author: fengyun2
  * @Date:   2016-06-22 10:02:47
  * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-07-02 11:57:41
+ * @Last Modified time: 2016-07-02 14:34:34
  */
 
 'use strict';
@@ -128,14 +128,19 @@ export const reverse = (v) => {
 /**
  * CDN路径拼接
  * @param  {[type]} v url路径
- * @param  {[type]} t 类型(按比例/定宽高)
  * @param  {[type]} w 宽度
  * @param  {[type]} h 高度
  * @param  {[type]} p 百分比
+ * @param  {[type]} t 类型(按比例/定宽高)
  * @return {[type]}   [description]
  */
-export const SpliceCDNUrl = (v, t, w, h, p) => {
-    let ext = v.substring(v.lastIndexOf('.') + 1)
-    let old_url = v.substring(0, v.lastIndexOf('.'))
-    return v + '_' + '_' + '';
+export const SpliceCDNUrl = (v, w = 100, h = 100, p = 50, t = 'fix') => {
+    console.log('t: ', t)
+    if (t == 'fix') { // 定宽高
+        v += '@' + w + 'w_' + h + 'h' + '_0e_80Q.';
+    } else if (t == 'scale') { // 按比例缩放
+        v += '@' + p + 'p';
+    }
+    console.log('new_url: ', v)
+    return v;
 };

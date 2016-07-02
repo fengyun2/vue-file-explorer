@@ -2,19 +2,22 @@
  * @Author: fengyun2
  * @Date:   2016-05-17 14:28:56
  * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-07-02 12:00:03
+ * @Last Modified time: 2016-07-02 14:31:47
  */
 
 // 'use strict';
 
-function SpliceCDNUrl (v, t, w, h, p) {
-    let ext = v.substring(v.lastIndexOf('.') + 1)
-    let old_url = v.substring(0, v.lastIndexOf('.'))
-    console.log('ext: ', ext)
-    console.log('old_url: ', old_url)
-
-    let new_url = old_url + '_' + '_' + ''
-    // return v + '_' + '_' + '';
+function SpliceCDNUrl (v, w = 100, h = 100, p = 50, t = 'fix') {
+    w = isNumber(w) ? w: 100;
+    h = isNumber(h) ? h: 100;
+    p = isNumber(p) ? p: 50;
+    if (t == 'fix') { // 定宽高
+        v += '@' + w + 'w_' + h + 'h' + '_0e_80Q.';
+    } else if (t == 'scale') { // 按比例缩放
+        v += '@' + p + 'p';
+    }
+    console.log('new_url: ', v)
+    return v;
 };
 
 
