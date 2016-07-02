@@ -2,7 +2,7 @@
  * @Author: fengyun2
  * @Date:   2016-06-22 10:02:47
  * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-07-02 11:29:36
+ * @Last Modified time: 2016-07-02 11:57:41
  */
 
 'use strict';
@@ -123,4 +123,19 @@ export const isImage = (v) => {
 
 export const reverse = (v) => {
     return v.split('').reverse().join('')
-}
+};
+
+/**
+ * CDN路径拼接
+ * @param  {[type]} v url路径
+ * @param  {[type]} t 类型(按比例/定宽高)
+ * @param  {[type]} w 宽度
+ * @param  {[type]} h 高度
+ * @param  {[type]} p 百分比
+ * @return {[type]}   [description]
+ */
+export const SpliceCDNUrl = (v, t, w, h, p) => {
+    let ext = v.substring(v.lastIndexOf('.') + 1)
+    let old_url = v.substring(0, v.lastIndexOf('.'))
+    return v + '_' + '_' + '';
+};

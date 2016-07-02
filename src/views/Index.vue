@@ -32,8 +32,10 @@ export default {
     },
     ready() {
       const _self = this
-      var html = xss(`<style>alert("xss");</style>`);
-      console.log(html);
+      SpliceCDNUrl('http://n.sinaimg.cn/photo/20160630/uEM5-fxtniax8285357.jpg')
+
+      // var html = xss(`<style>alert("xss");</style>`);
+      // console.log(html);
     }
 }
 </script>
