@@ -2,10 +2,68 @@
  * @Author: fengyun2
  * @Date:   2016-06-22 10:02:47
  * @Last Modified by:   fengyun2
- * @Last Modified time: 2016-06-27 13:06:54
+ * @Last Modified time: 2016-07-02 11:29:36
  */
 
 'use strict';
+
+/**
+ * 是否是数组
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isArray = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+};
+/**
+ * 是否是字符串
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isString = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object String]';
+};
+/**
+ * 是否为数字
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isNumber = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Number]';
+};
+/**
+ * 是否为undefined
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isUndefined = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Undefined]';
+};
+/**
+ * 是否为Boolean
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isBoolean = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Boolean]';
+};
+/**
+ * 是否为Object
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isObject = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Object]';
+};
+/**
+ * 是否为Function
+ * @param  {[type]}  obj [description]
+ * @return {Boolean}     [description]
+ */
+const isFunction = function(obj) {
+    return Object.prototype.toString.call(obj) === '[object Function]';
+};
+
 export const timeToNow = (time) => {
     const t = parseFloat(new Date - new Date(time)) / 1000;
     let str;
@@ -27,27 +85,28 @@ export const timeToNow = (time) => {
     return str;
 };
 export const isEmpty = (v) => {
-    switch (typeof v) {
-        case 'undefined':
-            return true;
-        case 'string':
-            if (v.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length === 0) return true;
-            break;
-        case 'boolean':
-            if (!v) return true;
-            break;
-        case 'number':
-            if (0 === v || isNaN(v)) return true;
-            break;
-        case 'object':
-            if (null === v || v.length === 0) return true;
-            for (var i in v) {
-                return false;
-            }
-            return true;
+    if (isUndefined(v)) {
+        return true;
+    } else if (isString(v)) {
+        if (v.replace(/(^[ \t\n\r]*)|([ \t\n\r]*$)/g, '').length === 0) return true;
+    } else if (isBoolean(v)) {
+        if (!v) return true;
+    } else if (isNumber(v)) {
+        if (0 === v || isNaN(v)) return true;
+    } else if (isObject(v)) {
+        if (null === v || v.length === 0) return true;
+        for (var i in v) {
+            return false;
+        }
+        return true;
+    } else if (isArray(v)) {
+        if (null === v || v.length === 0) return true;
+        for (var i in v) {
+            return false;
+        }
+        return true;
     }
     return false;
-    return v
 };
 
 export const isImage = (v) => {
@@ -56,9 +115,12 @@ export const isImage = (v) => {
         case 'jpg':
         case 'png':
         case 'gif':
-        return true;
+            return true;
         default:
-        return false;
+            return false;
     }
 };
 
+export const reverse = (v) => {
+    return v.split('').reverse().join('')
+}

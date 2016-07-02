@@ -2,7 +2,7 @@
 * @Author: DOKI
 * @Date:   2016-06-03 13:44:17
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-06-23 10:54:05
+* @Last Modified time: 2016-07-02 11:03:33
 */
 
 'use strict';
@@ -11,12 +11,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import lazyload from 'vue-lazyload'
-import { timeToNow } from './api/filters'
+import { timeToNow, reverse , isEmpty, isImage } from './api/filters'
 import LyApp from './api/lyapp'
 
 import { configRouter } from './router'
 
 Vue.filter('timeToNow', timeToNow)
+Vue.filter('reverse', reverse)
+Vue.filter('isEmpty', isEmpty)
+Vue.filter('isImage', isImage)
 
 Vue.use(VueRouter)
 Vue.use(VueResource)
