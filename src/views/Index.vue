@@ -37,7 +37,7 @@ export default {
     },
     ready() {
       const _self = this
-      // SpliceCDNUrl('http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg', null, '20', null, undefined)
+      SpliceCDNUrl('http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg', null, '20', null, undefined)
 
       // var html = xss(`<style>alert("xss");</style>`);
       // console.log(html);
