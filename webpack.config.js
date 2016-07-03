@@ -26,6 +26,7 @@ module.exports = {
     debug: true,
     devtool: 'eval',
     entry: [
+        'babel-polyfill',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
         path.resolve(__dirname, './src/main')
