@@ -6,7 +6,7 @@
         <form id="changeRepoForm" @submit.prevent="changeRepo()" class="form-inline">
           <div class="form-group">
             <label for="fullRepoName">Full Repo Name: </label>
-            <input type="text" id="fullRepoName" class="form-control" placeholder="fengyun" v-model="fullRepoName" style="width: 300px;">
+            <input type="text" id="fullRepoName" class="form-control" placeholder="fengyun2/ly_js" v-model="fullRepoName" style="width: 300px;">
           </div>
           <button type="submit" class="btn btn-primary">获&emsp;取</button>
         </form>
