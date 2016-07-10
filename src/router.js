@@ -1,8 +1,8 @@
 /*
  * @Author: fengyun2
  * @Date:   2016-06-07 15:09:16
- * @Last Modified by:   Administrator
- * @Last Modified time: 2016-07-02 09:09:06
+ * @Last Modified by:   fengyun2
+ * @Last Modified time: 2016-07-10 18:02:40
  */
 
 export function configRouter(router) {
@@ -17,6 +17,12 @@ export function configRouter(router) {
             name: 'index',
             component: function(resolve) {
                 require(['./views/Index'], resolve)
+            }
+        },
+        'github': {
+            name: 'github',
+            component: function(resolve) {
+                require(['./components/Github'], resolve)
             }
         }
     })

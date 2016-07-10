@@ -1,8 +1,8 @@
 /*
  * @Author: fengyun2
  * @Date:   2016-06-22 11:17:07
- * @Last Modified by:   Administrator
- * @Last Modified time: 2016-07-02 10:07:10
+ * @Last Modified by:   fengyun2
+ * @Last Modified time: 2016-07-10 18:07:46
  */
 /*!
  * =====================================================
@@ -23,7 +23,7 @@ LyApp.install = function(Vue, option) {
     }*/
     // 配置常用变量end
 
-    Vue.http.options.xhr = { withCredentials: true, cache: false, crossDomain: true }
+/*    Vue.http.options.xhr = { withCredentials: true, cache: false, crossDomain: true }
     Vue.http.options.headers = {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'X-Requested-With': 'XMLHttpRequest'
@@ -32,9 +32,8 @@ LyApp.install = function(Vue, option) {
     Vue.http.options.emulateHTTP = true
     Vue.http.options.timeout = 20000
     Vue.http.options.withCredentials = true
-    Vue.config.debug = true
+    Vue.config.debug = true*/
 
-    console.log('getParamFromUrl: ', getParamFromUrl())
 
     // 设置cookie
     Vue.cookie = function(key, value, options) {
