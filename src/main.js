@@ -2,11 +2,12 @@
 * @Author: DOKI
 * @Date:   2016-06-03 13:44:17
 * @Last Modified by:   fengyun2
-* @Last Modified time: 2016-07-02 14:18:15
+* @Last Modified time: 2016-07-03 20:54:27
 */
 
 'use strict';
 
+import 'babel-polyfill'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'

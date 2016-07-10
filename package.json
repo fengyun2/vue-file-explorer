@@ -76,7 +76,11 @@
     "vue-style-loader": "^1.0.0",
     "webpack": "^2.1.0-beta.14",
     "webpack-combine-loaders": "^2.0.0",
-    "webpack-dev-server": "^2.1.0-beta.0"
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "file-loader": "^0.9.0",
+    "transfer-webpack-plugin": "^0.1.4",
+    "babel-polyfill": "^6.9.1",
+    "resolve-url": "^0.2.1"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -92,6 +96,7 @@
     "vue-swipe": "^0.2.6",
     "vuex": "^1.0.0-rc.2",
     "vux": "^0.1.2",
-    "xss": "^0.2.13"
+    "xss": "^0.2.13",
+    "react-router": "^2.5.2"
   }
 }

@@ -1,8 +1,8 @@
 /*
  * @Author: fengyun2
  * @Date:   2016-06-03 13:44:17
- * @Last Modified by:   Administrator
- * @Last Modified time: 2016-07-02 10:03:04
+ * @Last Modified by:   fengyun2
+ * @Last Modified time: 2016-07-03 21:21:38
  */
 
 /**
@@ -16,6 +16,10 @@ var precss = require('precss');
 var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var TransferWebpackPlugin = require('transfer-webpack-plugin');
+var buildPath = path.resolve(__dirname, 'build');
+var nodeModulesPath = path.resolve(__dirname, 'node_modules');
+
 
 var fs = require('fs'),
     buildPath = './build/';
@@ -58,10 +62,13 @@ var snow = now.getFullYear() + '-' + (now.getMonth() + 1) +
 var static_url = 'assets/';
 module.exports = {
     entry: {
-        main: [path.resolve(__dirname, 'src/main')],
+        app: [path.resolve(__dirname, 'src/main')], // [1] 注意这里
+        react: ['babel-polyfill', 'react', 'react-dom', 'react-router'],
+        vue: ['babel-polyfill', 'vue', 'vue-router', 'vue-resource', 'vue-lazyload'],
+        zepto: ['zepto']
     },
     output: {
-        path: __dirname + '/build',
+        path: path.resolve(__dirname, 'build'),
         publicPath: '/',
         filename: static_url + 'js/[name].[chunkhash:16].js',
         chunkFilename: static_url + 'js/[name].[chunkhash:16].js'
@@ -138,11 +145,14 @@ module.exports = {
         plugins: ['transform-runtime']
     },
     plugins: [
+        //允许错误不打断程序
+        new webpack.NoErrorsPlugin(),
         new webpack.ProvidePlugin({
             $: 'zepto',
         }),
         // new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
+        //压缩打包的文件
         new uglifyJsPlugin({
             compress: {
                 warnings: false
@@ -162,7 +172,19 @@ module.exports = {
             }
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: [ 'zepto', 'zepto.js', 'common', 'common.js'],
+            name: [
+            'common',
+            'common.js', // [2] 和上面配置的入口对应,
+            'app',
+            'app.js',
+            'react',
+            'react.js',
+            'vue',
+            'vue.js',
+            'zepto',
+            'zepto.js'
+            ],
+            // filename: 'common.js', // 导出的文件的名称
             minChunks: Infinity
         }),
         function() {
